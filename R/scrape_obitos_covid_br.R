@@ -2,6 +2,19 @@ library(lubridate)
 library(tidyverse)
 library(jsonlite)
 
+#' get_deaths 
+#' 
+#' Recebe um vetor de números e retorna um vetor de números somando dois
+#' 
+#' @param start_date starting date 
+#'
+#' @param end_date last date you want to download the data 
+#'
+#' @param state Brazilian city you want to download the data 
+#'
+#' @param city city you want to download the data 
+#'
+#' @export
 #example of request for death data:
 # https://transparencia.registrocivil.org.br/api/record/death?start_date=2019-01-01&end_date=2019-04-30&state=AM&city=Manaus
 get_deaths <- function(start_date = "2020-01-01",
@@ -26,6 +39,21 @@ get_deaths <- function(start_date = "2020-01-01",
    fromJSON(url)
 }
 
+#' get_deaths_covid19 
+#' 
+#' Recebe um vetor de números e retorna um vetor de números somando dois
+#' 
+#' @param data_type if you want the date of the death (data_ocorrido) or the date the death was inserted in the records (data_registro) 
+#'
+#' @param start_date starting date 
+#'
+#' @param end_date last date you want to download the data 
+#'
+#' @param state Brazilian city you want to download the data 
+#'
+#' @param city city you want to download the data 
+#'
+#' @export
 #example of request for covid19 death data:
 # https://transparencia.registrocivil.org.br/api/covid?start_date=2020-03-01&end_date=2020-04-30&state=AM&city=Manaus&data_type=data_ocorrido&search=death-covid
 get_deaths_covid19 <- function(data_type = "data_ocorrido",
