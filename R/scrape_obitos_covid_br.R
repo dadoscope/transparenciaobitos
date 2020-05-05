@@ -31,12 +31,12 @@ get_deaths <- function(start_date = "2020-01-01",
 #example of request for covid19 death data:
 # https://transparencia.registrocivil.org.br/api/covid?start_date=2020-03-01&end_date=2020-04-30&state=AM&city=Manaus&data_type=data_ocorrido&search=death-covid
 get_deaths_covid19 <- function(data_type = "data_ocorrido",
-                               search = "death-covid",
                                start_date = "2020-01-01",
                                end_date = "2020-04-30",
                                state,
                                city
                                ){
+   search <- "death-covid"
    death_covid_url <- "https://transparencia.registrocivil.org.br/api/covid"
    
    if(is.na(ymd(start_date))){stop("start_date and end_date should have format yyyy-mm-dd")}
