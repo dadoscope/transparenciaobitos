@@ -66,7 +66,7 @@ get_deaths_respiratorydiseases <- function(){
    
 }
 
-#dat <- get_deaths(city="Salvador")
+#dat <- get_deaths(state="BA",city="Salvador")
 #head(dat)
 #dat <- get_deaths_covid19(state="BA",city="Salvador")
 #head(dat)
