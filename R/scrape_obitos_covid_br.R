@@ -1,6 +1,4 @@
 library(lubridate)
-library(httr)
-library(curl)
 library(tidyverse)
 library(jsonlite)
 
