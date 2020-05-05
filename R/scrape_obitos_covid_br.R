@@ -45,7 +45,6 @@ get_deaths_covid19 <- function(data_type = "data_ocorrido",
    if(missing(state)){stop("state parameter should be fulfilled with the acronym of one of the 27 Brazilian state")}
    
    if(!(data_type %in% c("data_ocorrido", "data_registro"))){stop("data_type parameter should be either data_ocorrido or data_registro")}
-   if(!(search %in% c("death-covid"))){stop("search parameter should be death-covid")}
 
    if(missing(city) && missing(state)){
       data <- paste0("start_date=",start_date,"&end_date=",end_date)
@@ -63,11 +62,13 @@ get_deaths_covid19 <- function(data_type = "data_ocorrido",
    fromJSON(url)
 }
 
+#example of request for respiratory diseases death data:
+# https://transparencia.registrocivil.org.br/api/covid?start_date=2020-03-01&end_date=2020-04-30&state=AM&data_type=data_ocorrido&search=death-respiratory&causa=pneumonia
 get_deaths_respiratorydiseases <- function(){
    
 }
 
-dat <- get_deaths(city="Salvador")
-head(dat)
-dat <- get_deaths_covid19(state="BA",city="Salvador")
-head(dat)
+#dat <- get_deaths(city="Salvador")
+#head(dat)
+#dat <- get_deaths_covid19(state="BA",city="Salvador")
+#head(dat)
