@@ -24,8 +24,8 @@ get_deaths <- function(start_date = "2020-01-01",
                        ){
    death_url <- "https://transparencia.registrocivil.org.br/api/record/death"
 
-   if(is.na(ymd(start_date))){stop("start_date and end_date should have format yyyy-mm-dd")}
-   if(is.na(ymd(end_date))){stop("start_date and end_date should have format yyyy-mm-dd")}
+   if(is.na(lubridate::ymd(start_date))){stop("start_date and end_date should have format yyyy-mm-dd")}
+   if(is.na(lubridate::ymd(end_date))){stop("start_date and end_date should have format yyyy-mm-dd")}
    if(missing(city) && missing(state)){
       data <- paste0("start_date=",start_date,"&end_date=",end_date)
    }else if(missing(city) && !missing(state)){
@@ -36,7 +36,7 @@ get_deaths <- function(start_date = "2020-01-01",
       data <- paste0("start_date=",start_date,"&end_date=",end_date,"&state=",state,"&city=",city)
    }
    url <- paste(death_url,data,sep="?")
-   fromJSON(url)
+   jsonlite::fromJSON(url)
 }
 
 #' get_deaths_covid19 
@@ -65,8 +65,8 @@ get_deaths_covid19 <- function(data_type = "data_ocorrido",
    search <- "death-covid"
    death_covid_url <- "https://transparencia.registrocivil.org.br/api/covid"
    
-   if(is.na(ymd(start_date))){stop("start_date and end_date should have format yyyy-mm-dd")}
-   if(is.na(ymd(end_date))){stop("start_date and end_date should have format yyyy-mm-dd")}
+   if(is.na(lubridate::ymd(start_date))){stop("start_date and end_date should have format yyyy-mm-dd")}
+   if(is.na(lubridate::ymd(end_date))){stop("start_date and end_date should have format yyyy-mm-dd")}
    
    if(missing(state)){stop("state parameter should be fulfilled with the acronym of one of the 27 Brazilian state")}
    
@@ -85,7 +85,7 @@ get_deaths_covid19 <- function(data_type = "data_ocorrido",
    data <- paste0(data,"&data_type=",data_type,"&search=",search)
    
    url <- paste(death_covid_url,data,sep="?")
-   fromJSON(url)
+   jsonlite::fromJSON(url)
 }
 
 #example of request for respiratory diseases death data:
